@@ -36,7 +36,7 @@ task main()
 
   int threshold = 2300;      /* found by taking a reading on both DARK and LIGHT    */
                             /* surfaces, adding them together, then dividing by 2. */
-  while(true)
+  while(true && vexRT[Btn8D] != 1)
   {
 
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -+
@@ -54,7 +54,7 @@ task main()
     {
       // counter-steer right:
       motor[leftMotor]  = 60;
-      motor[rightMotor] = 40;
+      motor[rightMotor] = -10;
     }
     // CENTER sensor sees dark:
     if(SensorValue(lineFollowerCENTER) > threshold)
@@ -67,7 +67,7 @@ task main()
     if(SensorValue(lineFollowerLEFT) > threshold)
     {
       // counter-steer left:
-      motor[leftMotor]  = 40;
+      motor[leftMotor]  = -10;
       motor[rightMotor] = 60;
     }
   }
